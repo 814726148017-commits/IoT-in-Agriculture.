@@ -1,0 +1,51 @@
+[PROBLEM]
+This is KrishiSense: smart farming, from soil to storage.
+Studies estimate that India loses about one point five trillion rupees of food every year, and fruits and vegetables can lose up to sixteen percent after harvest.
+The people who feel this most are small and marginal farmers.
+They decide when to water, when to spray, and how to store their harvest using experience and guesswork.
+But instinct cannot see moisture under the soil, or a disease starting under a leaf.
+The result is wasted water, wasted pesticide, and spoiled produce.
+
+[APPROACH]
+Our solution perceives, decides, and acts.
+Sensors and cameras perceive the field. A small field controller decides, using simple rules and A I.
+Then valves, fans, sprayers, and phone alerts act.
+To show this running, we built a virtual farm in Python, with forty eight zones, a standard F A O fifty six style water balance, a disease model, and a storage model.
+Each test compares normal practice against KrishiSense on identical weather.
+
+[IRRIGATION]
+Test A: irrigation, over a ninety day season.
+On the left, a timer waters every zone every five days, whatever the soil or the weather.
+On the right, KrishiSense perceives soil moisture in every zone each morning. It decides whether that zone is really thirsty, and whether rain is coming.
+Then it acts, opening only the valves that need water. Watch the sandy zones on the left of the field, which dry out first, and how watering is held back before rain.
+Averaged over thirty seasons, the timer applied 540 millimetres of water, and KrishiSense applied 339, with no loss of yield.
+
+[DISEASE]
+Test B: a disease outbreak that spreads from zone to zone.
+The baseline farmer walks the field once a week, and sprays everything once symptoms are obvious.
+KrishiSense cameras scan every zone daily. A zone is flagged only after two days in a row, and then only that zone and its neighbours are sprayed.
+Averaged over thirty runs, detection took 2.2 days instead of 13, with 36 zone sprays instead of 192.
+
+[STORAGE]
+Test C: thirty days of produce in a hot godown.
+KrishiSense runs fans at night when the outside air is cooler, and cooling only when needed to hold about twenty four degrees.
+Spoilage falls from 16.8 percent to 10.8 percent, using about 589 kilowatt hours of electricity for a five tonne store.
+
+[OUTCOME]
+Here are the results, averaged over thirty simulated seasons.
+Irrigation: 37 percent less water, and drainage waste cut from 248 to 48 millimetres, with the same crop yield.
+Disease: 81 percent fewer sprays, and problems found about 11 days sooner.
+Storage: spoilage reduced by about 36 percent.
+To be honest, these are simulation results. The detector accuracy, the disease spread, and the storage parameters are illustrative, so real numbers will differ. That is why a field pilot comes next.
+
+[REALITY]
+Now, the path to reality. Every virtual part maps to real hardware.
+Simulated moisture models become capacitive soil sensors. The virtual controller becomes an E S P thirty two or Raspberry Pi field gateway.
+Valve commands drive solenoid valves on a drip line, and cameras run a TensorFlow Lite model on a phone or edge device.
+Data travels by LoRa, wifi, or the mobile network, and the gateway keeps working offline.
+We will go in three steps. First, a bench test, replacing simulated noise with real sensor readings. Second, a one acre pilot on a partner farm, measuring water, cost, and yield against a normal plot. Third, rollout through farmer cooperatives.
+In reality we also expect sensor drift, patchy connectivity, and power cuts, so we plan regular calibration, spare sensors, an offline gateway, and solar power.
+
+[CLOSE]
+KrishiSense. Healthier crops, happier farmers. Thank you.
+
